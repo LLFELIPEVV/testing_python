@@ -1,0 +1,49 @@
+>>> from docstring2 import *
+
+>>> suma(10, 20)
+30
+>>> suma(138, -45)
+93
+
+>>> factorial(10)
+3628800
+>>> factorial(3)
+6
+
+>>> maximo([1,2,3,4,5,6,7,8,9])
+9
+>>> maximo([90, 100, -200])
+100
+
+>>> contar_letra("adamantio", "a")
+3
+>>> contar_letra("Super Saiyajin Dios Azul", "s")
+3
+
+>>> promedio([10, 20, 30, 40, 50])
+30.0
+>>> promedio([43, 65, 23, 56, 23])
+42.0
+
+>>> eliminar_duplicados(["ABA", "10", "Miki", "ABA", "10"])
+['10', 'ABA', 'Miki']
+
+>>> celsius_a_fahrenheit(60.0)
+140.0
+>>> celsius_a_fahrenheit(103.0)
+217.4
+
+>>> area_circulo(2)
+12.566370614359172
+
+>>> es_primo(1)
+False
+>>> es_primo(2)
+True
+>>> es_primo(43)
+True
+
+>>> es_palindromo("Arenera")
+True
+>>> es_palindromo("Areneras")
+False
