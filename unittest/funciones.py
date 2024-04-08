@@ -1,3 +1,5 @@
+from conexion_BD import inicializar_base_datos
+
 def suma(num1: int, num2: int) -> int:
     return num1 + num2
 
@@ -34,3 +36,30 @@ class Calculadora:
     
     def get_resultado(self):
         return self._resultado
+
+class BD:
+    def __init__(self) -> None:
+        self.con = inicializar_base_datos()
+    
+    def __del__(self) -> None:
+        self.con.close()
+    
+    def crear_usuario(self, nombre: str, email: str):
+        self.con.execute('INSERT INTO usuarios (nombre, email) VALUES (?, ?)', (nombre, email))
+        self.con.commit()
+
+    def get_usuario(self, id:int=None, nombre:str=None, email:str=None):
+        consulta = 'SELECT * FROM usuarios WHERE'
+        parametros = []
+        if id is not None:
+            consulta += ' id = ?'
+            parametros.append(id)
+        if nombre is not None:
+            consulta += ' nombre = ?'
+            parametros.append(nombre)
+        if email is not None:
+            consulta += ' email = ?'
+            parametros.append(email)
+        cursor = self.con.execute(consulta, parametros)
+        usuario = cursor.fetchone()
+        return usuario

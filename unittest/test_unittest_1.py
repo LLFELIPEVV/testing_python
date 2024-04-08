@@ -1,5 +1,7 @@
 import unittest
+
 from funciones import *
+from conexion_BD import inicializar_base_datos
 
 class TestFunciones(unittest.TestCase):
     def test_suma(self):
@@ -57,6 +59,23 @@ class TestCalculadora(unittest.TestCase):
     def test_restar(self):
         self.calculadora.restar(10, 2)
         self.assertEqual(self.calculadora.get_resultado(), 8)
+
+class TestBD(unittest.TestCase):
+    """ def setUp(self) -> None:
+        self.con = inicializar_base_datos()
+    
+    def tearDown(self) -> None:
+        self.con.close()
+    """
+    def setUp(self) -> None:
+        self.BD = BD()
+     
+    def test_crear_usuario(self):
+        self.BD.crear_usuario("Pedro", "pedro123@gmail.com")
+        usuario = self.BD.get_usuario("Pedro")
+        self.assertIsNone(usuario)
+        self.assertEqual(usuario['nombre'], "Pedro")
+        self.assertEqual(usuario['email'], "pedro123@gmail.com")
 
 if __name__ == '__main__':
     unittest.main()
