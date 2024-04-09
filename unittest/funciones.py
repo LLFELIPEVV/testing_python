@@ -62,4 +62,30 @@ class BD:
             parametros.append(email)
         cursor = self.con.execute(consulta, parametros)
         usuario = cursor.fetchone()
-        return usuario
+        if usuario:
+            # Convertir la tupla a un diccionario
+            usuario_dict = {'id': usuario[0], 'nombre': usuario[1], 'email': usuario[2]}
+            return usuario_dict
+        else:
+            return None
+
+class GestorDeEstudiantes:
+    def __init__(self):
+        self.estudiantes = []
+    
+    def add_estudiantes(self, Nombre: str, Edad: int) -> None:
+        self.estudiantes.append({'Nombre': Nombre, 'Edad': Edad})
+    
+    def del_estudiantes(self, Nombre: str) -> None:
+        for estudiante in self.estudiantes:
+            if estudiante.Nombre == Nombre:
+                self.estudiantes.remove(estudiante)
+    
+    def get_listado_estudiantes(self) -> list:
+        return self.estudiantes.copy()
+    
+    def get_estudiante(self, Nombre: str) -> dict:
+        for estudiante in self.estudiantes:
+            if estudiante.Nombre == Nombre:
+                return estudiante
+    
