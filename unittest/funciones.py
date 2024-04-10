@@ -78,7 +78,7 @@ class GestorDeEstudiantes:
     
     def del_estudiantes(self, Nombre: str) -> None:
         for estudiante in self.estudiantes:
-            if estudiante.Nombre == Nombre:
+            if estudiante['Nombre'] == Nombre:
                 self.estudiantes.remove(estudiante)
     
     def get_listado_estudiantes(self) -> list:
@@ -86,6 +86,6 @@ class GestorDeEstudiantes:
     
     def get_estudiante(self, Nombre: str) -> dict:
         for estudiante in self.estudiantes:
-            if estudiante.Nombre == Nombre:
+            if estudiante['Nombre'] == Nombre:
                 return estudiante
     

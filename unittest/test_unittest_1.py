@@ -84,14 +84,16 @@ class TestGestorEstudiantes(unittest.TestCase):
     
     def test_del_estudiantes(self):
         self.Gestor.del_estudiantes("Juan")
-        self.assertEqual(len(self.Gestor.get_listado_estudiantes()), 3)
+        for estudiante in self.Gestor.get_listado_estudiantes():
+            print(estudiante)
+        self.assertEqual(len(self.Gestor.get_listado_estudiantes()), 2)
         estudiante = self.Gestor.get_estudiante("Juan")
         self.assertIsNone(estudiante)
     
     def test_get_estudiante(self):
         usuario = self.Gestor.get_estudiante("Pedro")
-        self.assertEqual(usuario.Name, "Pedro")
-        self.assertEqual(usuario.Edad, 10)
+        self.assertEqual(usuario['Nombre'], "Pedro")
+        self.assertEqual(usuario['Edad'], 10)
 
     def test_get_listado_estudiantes(self):
         listado = self.Gestor.get_listado_estudiantes()
